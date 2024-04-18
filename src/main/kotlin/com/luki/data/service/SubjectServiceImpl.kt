@@ -1,7 +1,6 @@
 package com.luki.data.service
 
 import com.luki.data.model.Subject
-import com.luki.data.service.SubjectService
 
 class SubjectServiceImpl: SubjectService {
 

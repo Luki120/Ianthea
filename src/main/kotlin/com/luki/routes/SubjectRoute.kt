@@ -1,6 +1,5 @@
 package com.luki.routes
 
-import com.luki.data.model.Subject
 import com.luki.data.repository.SubjectRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
