@@ -25,5 +25,5 @@ dependencies {
 	implementation("io.ktor:ktor-server-call-logging-jvm")
 	implementation("io.ktor:ktor-server-host-common-jvm")
 	implementation("io.ktor:ktor-server-netty-jvm")
-	implementation("ch.qos.logback:logback-classic:1.4.14")
+	implementation("ch.qos.logback:logback-classic:1.5.6")
 }
