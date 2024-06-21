@@ -1,7 +1,3 @@
-val ktor_version = "2.3.9"
-val kotlin_version = "1.9.23"
-val logback_version = "1.4.14"
-
 plugins {
 	kotlin("jvm") version "1.9.23"
 	id("io.ktor.plugin") version "2.3.9"
@@ -9,7 +5,7 @@ plugins {
 }
 
 group = "com.luki"
-version = "0.0.1"
+version = "0.9.0"
 
 application {
 	mainClass.set("io.ktor.server.netty.EngineMain")
@@ -29,7 +25,5 @@ dependencies {
 	implementation("io.ktor:ktor-server-call-logging-jvm")
 	implementation("io.ktor:ktor-server-host-common-jvm")
 	implementation("io.ktor:ktor-server-netty-jvm")
-	implementation("ch.qos.logback:logback-classic:$logback_version")
-	testImplementation("io.ktor:ktor-server-tests-jvm")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+	implementation("ch.qos.logback:logback-classic:1.2.11")
 }
