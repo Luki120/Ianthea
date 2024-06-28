@@ -1,4 +1,4 @@
-## Ianthea
+# Ianthea
 
 * A REST API made with Ktor & Kotlin to show all the available subjects on my curriculum's career. The actual project is only useful to myself, but it showcases how you can easily create an API for your backend in just a few loc :tm:
 
