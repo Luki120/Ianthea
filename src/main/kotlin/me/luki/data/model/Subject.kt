@@ -1,4 +1,4 @@
-package com.luki.data.model
+package me.luki.data.model
 
 import kotlinx.serialization.Serializable
 

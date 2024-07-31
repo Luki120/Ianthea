@@ -1,6 +1,6 @@
-package com.luki.data.repository
+package me.luki.data.repository
 
-import com.luki.data.model.Subject
+import me.luki.data.model.Subject
 
 class SubjectRepositoryImpl: SubjectRepository {
 

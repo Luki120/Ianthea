@@ -4,7 +4,7 @@ plugins {
 	id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0"
 }
 
-group = "com.luki"
+group = "me.luki"
 version = "0.9.0"
 
 application {

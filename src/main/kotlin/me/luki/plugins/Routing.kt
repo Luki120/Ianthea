@@ -1,7 +1,7 @@
-package com.luki.plugins
+package me.luki.plugins
 
-import com.luki.di.SubjectProvider
-import com.luki.routes.subjects
+import me.luki.di.SubjectProvider
+import me.luki.routes.subjects
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 

@@ -1,4 +1,4 @@
-package com.luki.plugins
+package me.luki.plugins
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

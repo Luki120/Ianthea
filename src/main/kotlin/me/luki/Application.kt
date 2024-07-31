@@ -1,8 +1,8 @@
-package com.luki
+package me.luki
 
-import com.luki.plugins.configureMonitoring
-import com.luki.plugins.configureRouting
-import com.luki.plugins.configureSerialization
+import me.luki.plugins.configureMonitoring
+import me.luki.plugins.configureRouting
+import me.luki.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
 
