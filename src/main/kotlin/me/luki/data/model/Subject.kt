@@ -7,5 +7,6 @@ data class Subject(
 	val name: String,
 	val year: String,
 	val grade: Int? = null,
-	val isFinished: Boolean = false
+	val isFinished: Boolean = false,
+	val hasThreeExams: Boolean = false
 )

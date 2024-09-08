@@ -1,0 +1,33 @@
+name: Deploy to Koyeb
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install & configure the Koyeb CLI
+        uses: koyeb-community/koyeb-actions@v2
+        with:
+          api_token: "${{ secrets.KOYEB_API_TOKEN }}"
+
+      - name: Build & deploy the API to Koyeb
+        uses: koyeb/action-git-deploy@v1
+        with:
+          app-name: ianthea
+          git-builder: docker
+          git-docker-dockerfile: Dockerfile
+          service-name: ianthea
+          service-env: "PORT=8000"
+          service-ports: "8000:http"
+          service-regions: was
+          service-routes: "/:8000"
+          service-instance-type: free
