@@ -5,11 +5,37 @@ import me.luki.plugins.configureRouting
 import me.luki.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
+import me.luki.data.model.user.MongoUserDataSource
+import me.luki.plugins.configureSecurity
+import me.luki.security.hashing.SHA256HashingService
+import me.luki.security.token.JwtTokenService
+import me.luki.security.token.TokenConfig
+import org.litote.kmongo.coroutine.coroutine
+import org.litote.kmongo.reactivestreams.KMongo
 
 fun main(args: Array<String>) = EngineMain.main(args)
 
 fun Application.module() {
+	val password = System.getenv("mongoPassword")
+	val connectionString = "mongodb+srv://lukimaine120:$password@iantheadb.w54r9.mongodb.net/?retryWrites=true&w=majority&appName=IantheaDB"
+
+	val database = KMongo.createClient(connectionString = connectionString)
+		.coroutine
+		.getDatabase("IantheaDB")
+
+	val userDataSource = MongoUserDataSource(database = database)
+	val hashingService = SHA256HashingService()
+	val tokenService = JwtTokenService()
+
+	val tokenConfig = TokenConfig(
+		issuer = environment.config.property("jwt.issuer").getString(),
+		audience = environment.config.property("jwt.audience").getString(),
+		expiresIn = System.currentTimeMillis() + 365L * 1000L * 60L * 60L * 24L,
+		secret = System.getenv("JWTSecret")
+	)
+
+	configureSecurity(config = tokenConfig)
 	configureSerialization()
 	configureMonitoring()
-	configureRouting()
+	configureRouting(userDataSource, hashingService, tokenService, tokenConfig)
 }

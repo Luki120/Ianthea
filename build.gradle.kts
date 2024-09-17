@@ -16,12 +16,17 @@ application {
 
 dependencies {
 	implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+	implementation("io.ktor:ktor-server-auth-jvm")
+	implementation("io.ktor:ktor-server-auth-jwt-jvm")
 	implementation("io.ktor:ktor-server-core-jvm")
 	implementation("io.ktor:ktor-server-call-logging-jvm")
 	implementation("io.ktor:ktor-server-content-negotiation-jvm")
 	implementation("io.ktor:ktor-server-host-common-jvm")
 	implementation("io.ktor:ktor-server-netty-jvm")
 	implementation("ch.qos.logback:logback-classic:1.5.7")
+	implementation("commons-codec:commons-codec:1.17.1")
+	implementation("org.litote.kmongo:kmongo:5.1.0")
+	implementation("org.litote.kmongo:kmongo-coroutine:5.1.0")
 }
 
 repositories {
