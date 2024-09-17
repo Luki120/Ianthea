@@ -1,14 +1,14 @@
 package me.luki.data.repository
 
-import me.luki.data.model.Subject
+import me.luki.data.model.subject.Subject
 
 class SubjectRepositoryImpl: SubjectRepository {
 
 	override suspend fun getSubjects(): List<Subject> {
 		return listOf(
-			Subject(name = "Anatomy", year = "First", grade = 7, isFinished = true, hasThreeExams = true),
-			Subject(name = "HyE", year = "First", grade = 4, isFinished = true),
-			Subject(name = "Mental Health", year = "First", grade = 8, isFinished = true),
+			Subject(name = "Anatomy", year = "First", hasThreeExams = true),
+			Subject(name = "HyE", year = "First"),
+			Subject(name = "Mental Health", year = "First"),
 			Subject(name = "Bioethics I", year = "First"),
 			Subject(name = "Physiology", year = "Second"),
 			Subject(name = "Biochemistry", year = "Second", hasThreeExams = true),
