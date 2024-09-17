@@ -19,6 +19,18 @@ jobs:
         with:
           api_token: "${{ secrets.KOYEB_API_TOKEN }}"
 
+      - name: Create JWT secret
+        uses: koyeb/action-git-deploy/secret@v1
+        with:
+          secret-name: JWT_SECRET
+          secret-value: "${{ secrets.JWT_SECRET }}"
+
+      - name: Create MongoDB password secret
+        uses: koyeb/action-git-deploy/secret@v1
+        with:
+          secret-name: MONGO_PASSWORD
+          secret-value: "${{ secrets.MONGO_PASSWORD }}"
+
       - name: Build & deploy the API to Koyeb
         uses: koyeb/action-git-deploy@v1
         with:
@@ -26,7 +38,7 @@ jobs:
           git-builder: docker
           git-docker-dockerfile: Dockerfile
           service-name: ianthea
-          service-env: "PORT=8000"
+          service-env: JWTSecret=@JWT_SECRET,mongoPassword=@MONGO_PASSWORD
           service-ports: "8000:http"
           service-regions: was
           service-routes: "/:8000"
