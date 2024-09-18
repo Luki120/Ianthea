@@ -1,13 +1,14 @@
 package me.luki.data.model.user
 
-import org.litote.kmongo.coroutine.CoroutineDatabase
-import org.litote.kmongo.eq
+import com.mongodb.client.model.Filters.eq
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
+import kotlinx.coroutines.flow.firstOrNull
 
-class MongoUserDataSource(database: CoroutineDatabase): UserDataSource {
-    private val users = database.getCollection<User>()
+class MongoUserDataSource(database: MongoDatabase): UserDataSource {
+    private val users = database.getCollection<User>("users")
 
     override suspend fun getUserByUsername(username: String): User? {
-        return users.findOne(User::username eq username)
+        return users.find(eq(User::username.name, username)).firstOrNull()
     }
 
     override suspend fun insertUser(user: User): Boolean {
