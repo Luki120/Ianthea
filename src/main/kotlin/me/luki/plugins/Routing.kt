@@ -1,25 +1,26 @@
 package me.luki.plugins
 
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
-import me.luki.data.model.user.UserDataSource
-import me.luki.di.SubjectProvider
+import me.luki.di.*
 import me.luki.routes.*
-import me.luki.security.hashing.HashingService
-import me.luki.security.token.TokenConfig
-import me.luki.security.token.TokenService
 
-fun Application.configureRouting(
-    userDataSource: UserDataSource,
-    hashingService: HashingService,
-    tokenService: TokenService,
-    tokenConfig: TokenConfig,
-) {
+fun Application.configureRouting(database: MongoDatabase, environment: ApplicationEnvironment) {
 	routing {
 		subjects(repository = SubjectProvider.provideSubjectRepository())
-		signIn(userDataSource, hashingService, tokenService, tokenConfig)
-		signUp(hashingService, userDataSource)
-		deleteUser(userDataSource)
+
+		val hashingProvider = HashingProvider.provideHashingService()
+		val userProvider = UserProvider.provideUserDataSource(database = database)
+
+		signIn(
+			userDataSource = userProvider,
+			hashingService = hashingProvider,
+			tokenService = TokenProvider.provideTokenService(),
+			tokenConfig = TokenConfigProvider.provideTokenConfig(environment = environment)
+		)
+		signUp(hashingService = hashingProvider, userDataSource = userProvider)
+		deleteUser(userDataSource = userProvider)
 		authenticate()
 		getSecretInfo()
 	}

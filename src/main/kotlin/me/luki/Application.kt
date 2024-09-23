@@ -4,6 +4,7 @@ import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
 import me.luki.data.model.user.MongoUserDataSource
+import me.luki.di.TokenConfigProvider
 import me.luki.plugins.configureMonitoring
 import me.luki.plugins.configureRouting
 import me.luki.plugins.configureSecurity
@@ -20,19 +21,8 @@ fun Application.module() {
 
 	val database = MongoClient.create(connectionString = connectionString).getDatabase("IantheaDB")
 
-	val userDataSource = MongoUserDataSource(database = database)
-	val hashingService = SHA256HashingService()
-	val tokenService = JwtTokenService()
-
-	val tokenConfig = TokenConfig(
-		issuer = environment.config.property("jwt.issuer").getString(),
-		audience = environment.config.property("jwt.audience").getString(),
-		expiresIn = System.currentTimeMillis() + 365L * 1000L * 60L * 60L * 24L,
-		secret = System.getenv("JWTSecret")
-	)
-
-	configureSecurity(config = tokenConfig)
-	configureSerialization()
 	configureMonitoring()
-	configureRouting(userDataSource, hashingService, tokenService, tokenConfig)
+	configureSecurity(config = TokenConfigProvider.provideTokenConfig(environment = environment))
+	configureSerialization()
+	configureRouting(database, environment)
 }
