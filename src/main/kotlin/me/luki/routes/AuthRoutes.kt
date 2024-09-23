@@ -17,6 +17,7 @@ import me.luki.security.token.TokenClaim
 import me.luki.security.token.TokenConfig
 import me.luki.security.token.TokenService
 import org.apache.commons.codec.digest.DigestUtils
+import org.bson.types.ObjectId
 import org.slf4j.LoggerFactory
 
 private val logger = LoggerFactory.getLogger("IantheaLogger")
@@ -25,6 +26,8 @@ private object AuthError {
     const val BAD_REQUEST = "Invalid request"
     const val INCORRECT_DATA = "Incorrect username or password"
     const val USER_INSERTION_FAILED = "Something went wrong when trying to insert a user to the database"
+    const val USER_DELETION_FAILED = "Something went wrong when trying to delete a user from the database"
+    const val USER_NOT_FOUND = "This user does not exist in the database"
 }
 
 fun Route.signUp(hashingService: HashingService, userDataSource: UserDataSource) {
@@ -94,6 +97,32 @@ fun Route.signIn(
     }
 }
 
+fun Route.deleteUser(userDataSource: UserDataSource) {
+    delete("/v1/auth/users/{id}") {
+        val userId = call.parameters["id"]
+
+        if (userId.isNullOrEmpty()) {
+            call.respond(HttpStatusCode.BadRequest, AuthError.BAD_REQUEST)
+            return@delete
+        }
+
+        val userExists = userDataSource.userExistsInDatabase(ObjectId(userId))
+        if (!userExists) {
+            call.respond(HttpStatusCode.NotFound, AuthError.USER_NOT_FOUND)
+            logger.error(AuthError.USER_NOT_FOUND)
+            return@delete
+        }
+
+        val wasAcknowledged = userDataSource.deleteUserWithId(ObjectId(userId))
+        if(!wasAcknowledged) {
+            call.respond(HttpStatusCode.Conflict, AuthError.USER_DELETION_FAILED)
+            logger.error(AuthError.USER_DELETION_FAILED)
+            return@delete
+        }
+        call.respond(HttpStatusCode.OK)
+    }
+}
+
 fun Route.authenticate() {
     authenticate {
         get("/v1/auth/authenticate") {
@@ -107,7 +136,7 @@ fun Route.getSecretInfo() {
         get("/v1/auth/secret") {
             val principal = call.principal<JWTPrincipal>()
             val userId = principal?.getClaim("userId", String::class)
-            call.respond(HttpStatusCode.OK, "Your userId is $userId")
+            call.respond(HttpStatusCode.OK, "$userId")
         }
     }
 }

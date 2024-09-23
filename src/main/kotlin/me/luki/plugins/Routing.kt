@@ -19,6 +19,7 @@ fun Application.configureRouting(
 		subjects(repository = SubjectProvider.provideSubjectRepository())
 		signIn(userDataSource, hashingService, tokenService, tokenConfig)
 		signUp(hashingService, userDataSource)
+		deleteUser(userDataSource)
 		authenticate()
 		getSecretInfo()
 	}
