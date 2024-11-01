@@ -1,7 +1,7 @@
 plugins {
-	kotlin("jvm") version "2.0.20"
-	id("io.ktor.plugin") version "2.3.12"
-	id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20"
+	kotlin("jvm") version "2.0.21"
+	id("io.ktor.plugin") version "3.0.1"
+	id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
 }
 
 group = "me.luki"
@@ -23,7 +23,7 @@ dependencies {
 	implementation("io.ktor:ktor-server-content-negotiation-jvm")
 	implementation("io.ktor:ktor-server-host-common-jvm")
 	implementation("io.ktor:ktor-server-netty-jvm")
-	implementation("ch.qos.logback:logback-classic:1.5.8")
+	implementation("ch.qos.logback:logback-classic:1.5.12")
 	implementation("commons-codec:commons-codec:1.17.1")
 	implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.2.0")
 }
