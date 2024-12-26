@@ -9,7 +9,7 @@ class SubjectRepositoryImpl: SubjectRepository {
 			Subject(name = "Anatomy", year = "First", hasThreeExams = true),
 			Subject(name = "HyE", year = "First"),
 			Subject(name = "Mental Health", year = "First"),
-			Subject(name = "Bioethics I", year = "First"),
+			Subject(name = "Bioethics", year = "First"),
 			Subject(name = "Physiology", year = "Second"),
 			Subject(name = "Biochemistry", year = "Second", hasThreeExams = true),
 			Subject(name = "Immunology", year = "Third"),
@@ -19,9 +19,7 @@ class SubjectRepositoryImpl: SubjectRepository {
 			Subject(name = "Pathology", year = "Third"),
 			Subject(name = "Pathology II", year = "Fourth"),
 			Subject(name = "Semiology", year = "Fourth"),
-			Subject(name = "Public Health I", year = "Fourth"),
-			Subject(name = "Public Health II", year = "Fifth, Sixth"),
-			Subject(name = "Bioethics II", year = "Fifth, Sixth"),
+			Subject(name = "Public Health", year = "Fourth"),
 			Subject(name = "Pharmacology II", year = "Fifth, Sixth"),
 			Subject(name = "Toxicology", year = "Fifth, Sixth"),
 			Subject(name = "Legal Medicine", year = "Fifth, Sixth"),
@@ -41,6 +39,7 @@ class SubjectRepositoryImpl: SubjectRepository {
 			Subject(name = "Neurosurgery", year = "Fifth, Sixth"),
 			Subject(name = "Obstetrics", year = "Fifth, Sixth"),
 			Subject(name = "Gynecology", year = "Fifth, Sixth"),
+			Subject(name = "Tocogynecology", year = "Fifth, Sixth"),
 			Subject(name = "Pediatrics", year = "Fifth, Sixth"),
 			Subject(name = "Family Medicine", year = "Fifth, Sixth")
 		)
