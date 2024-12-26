@@ -1,6 +1,11 @@
 # Ianthea
 
-* A REST API made with Ktor & Kotlin to show all the available subjects on my curriculum's career. The actual project is only useful to myself, but it showcases how you can easily create an API for your backend in just a few loc :tm:
+* A custom backend made with Ktor & Kotlin, for my Swift application [Iris](https://github.com/Luki120/Iris).
+
+## Features
+
+* JWT authentication system
+* REST API to show all the subjects from my curriculum's career
 
 ## Socials
 
