@@ -39,7 +39,6 @@ class SubjectRepositoryImpl: SubjectRepository {
 			Subject(name = "Neurosurgery", year = "Fifth, Sixth"),
 			Subject(name = "Obstetrics", year = "Fifth, Sixth"),
 			Subject(name = "Gynecology", year = "Fifth, Sixth"),
-			Subject(name = "Tocogynecology", year = "Fifth, Sixth"),
 			Subject(name = "Pediatrics", year = "Fifth, Sixth"),
 			Subject(name = "Family Medicine", year = "Fifth, Sixth")
 		)
