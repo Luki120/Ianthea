@@ -12,7 +12,7 @@ import java.time.LocalDate
 data class Subject(
 	val name: String,
 	val year: String,
-	val grade: Int? = null,
+	val grades: List<Int> = emptyList(),
 	val isFinished: Boolean = false,
 	val hasThreeExams: Boolean = false,
 	@Serializable(with = LocalDateSerializer::class)
