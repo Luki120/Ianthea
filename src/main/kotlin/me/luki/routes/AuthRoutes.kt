@@ -8,8 +8,8 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import me.luki.data.model.user.User
 import me.luki.data.model.user.UserDataSource
-import me.luki.data.requests.AuthRequest
-import me.luki.data.responses.AuthResponse
+import me.luki.data.model.auth.AuthRequest
+import me.luki.data.model.auth.AuthResponse
 import me.luki.security.hashing.HashingService
 import me.luki.security.hashing.SaltedHash
 import me.luki.security.token.TokenClaim

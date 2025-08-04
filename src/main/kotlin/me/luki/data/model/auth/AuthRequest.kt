@@ -1,4 +1,4 @@
-package me.luki.data.requests
+package me.luki.data.model.auth
 
 import kotlinx.serialization.Serializable
 
