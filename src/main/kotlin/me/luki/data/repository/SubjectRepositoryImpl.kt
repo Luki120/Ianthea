@@ -14,7 +14,7 @@ class SubjectRepositoryImpl: SubjectRepository {
 			Subject(name = "Immunology", year = "Third", shortName = "Inmuno"),
 			Subject(name = "Microbiology", year = "Third", shortName = "Micro"),
 			Subject(name = "Microbiology II", year = "Third", shortName = "Micro II"),
-			Subject(name = "Pharmacology", year = "Third", shortName = "Fármaco"),
+			Subject(name = "Pharmacology", year = "Third", shortName = "Fármaco", hasThreeExams = true),
 			Subject(name = "Pathology", year = "Third", shortName = "Pato"),
 			Subject(name = "Pathology II", year = "Fourth", shortName = "Pato II"),
 			Subject(name = "Semiology", year = "Fourth", shortName = "Semio"),
