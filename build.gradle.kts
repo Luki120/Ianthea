@@ -25,7 +25,7 @@ dependencies {
 	implementation("io.ktor:ktor-server-netty-jvm")
 	implementation("ch.qos.logback:logback-classic:1.5.32")
 	implementation("commons-codec:commons-codec:1.21.0")
-	implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.6.3")
+	implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.6.4")
 }
 
 repositories {
